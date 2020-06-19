@@ -92,7 +92,7 @@ async def erokemo(message: types.Message):
 
 @dp.message_handler(commands=['lesbian'])
 async def lesbian(message: types.Message):
-    await message.reply_photo(nekos.img('lesbian'))
+    await message.reply_photo(nekos.img('les'))
 
 @dp.message_handler(commands=['wall'])
 async def wallpaper(message: types.Message):
