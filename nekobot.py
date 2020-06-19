@@ -28,7 +28,7 @@ async def send_start(message: types.Message):
 
 
 @dp.message_handler(commands=['help'])
-async def send_start(message: types.Message):
+async def send_help(message: types.Message):
     """
     This handler will be called when user sends `/help` command
     """
