@@ -20,9 +20,9 @@ async def send_start(message: types.Message):
     This handler will be called when user sends `/start` command
     """
     await message.reply("Hi!" + " " + message.from_user.first_name + " " +
-                        "my name is Nekobot. I'm built on python3 & powerd by Nekos-life API "
-                        "I can supply you loads of anime wallpapers and hentai images. "
-                        "Click /help to get started with the list of possible commands! "
+                        "my name is Nekobot. I'm built on python3 & powerd by Nekos-life "
+                        "I can supply you loads of anime wallpapers and hentai images.\n "
+                        "Click: /help to get started with the list of possible commands! "
                         "\n\nMade with ❤️ by [starry](tg://user?id=894380120) on aiogram.",
                         parse_mode='markdown')
 
