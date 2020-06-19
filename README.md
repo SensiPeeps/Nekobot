@@ -6,5 +6,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Telegram hentai supplier for private chats.
+Can be found on telegram as [Nekobot](https://t.me/hentaistarbot)
 
 Fully asynchronous powered by [Nekos API](https://nekos.life) written on aiogram library!
