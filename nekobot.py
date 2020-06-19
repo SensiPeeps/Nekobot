@@ -16,9 +16,9 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
 async def send_start(message: types.Message):
-    """
-    This handler will be called when user sends `/start` command
-    """
+
+    "This handler will be called when user sends `/start` command"
+
     await message.reply("Hi!" + " " + message.from_user.first_name + " " +
                         "my name is Nekobot. I'm built on python3 & powerd by Nekos-life "
                         "I can supply you loads of anime wallpapers and hentai images.\n"
@@ -29,9 +29,9 @@ async def send_start(message: types.Message):
 
 @dp.message_handler(commands=['help'])
 async def send_help(message: types.Message):
-    """
-    This handler will be called when user sends `/help` command
-    """
+
+    "This handler will be called when user sends `/help` command"
+
     await message.reply(HELPSTR.format(message.from_user.first_name),
     parse_mode='html')
 
