@@ -26,7 +26,7 @@ import logging
 import os
 from aiogram import Bot, Dispatcher, executor, types
 import nekos
-from helpstr import HELPSTR
+from helpstr import HELPSTR, STARTSTR
 
 API_TOKEN = os.environ.get('TOKEN')
 
@@ -38,26 +38,39 @@ bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
 
+keyboard_markup = types.InlineKeyboardMarkup(row_width=1)
+btns = types.InlineKeyboardButton("Commands available ❔", callback_data='send_help')
+keyboard_markup.row(btns)
+
 @dp.message_handler(commands=['start'])
 async def send_start(message: types.Message):
 
     "This handler will be called when user sends `/start` command"
 
-    await message.reply("Hi!" + " " + message.from_user.first_name + " " +
-                        "my name is Nekobot. I'm built on python3 & powerd by Nekos-life "
-                        "I can supply you loads of anime wallpapers and hentai images.\n"
-                        + "Click: /help to get started with the list of possible commands! "
-                        "\n\nMade with ❤️ by [starry](tg://user?id=894380120) on aiogram.",
-                        parse_mode='markdown')
+    await message.reply(STARTSTR.format(message.from_user.first_name), parse_mode='markdown',
+          reply_markup=keyboard_markup, disable_web_page_preview=True)
 
 
-@dp.message_handler(commands=['help'])
-async def send_help(message: types.Message):
+@dp.callback_query_handler(text='send_help')
+async def help_callback(query: types.CallbackQuery):
 
-    "This handler will be called when user sends `/help` command"
+    "This handler answer callback query data to send help string"
 
-    await message.reply(HELPSTR.format(message.from_user.first_name),
-    parse_mode='html')
+    # Scoped variable of keyboard_markup for help callback
+    keyboard_markup = types.InlineKeyboardMarkup(row_width=1)
+    btns = types.InlineKeyboardButton("Go back ↩️", callback_data='go_back')
+    keyboard_markup.row(btns)
+
+    await query.message.edit_text(HELPSTR.format(query.from_user.first_name),
+    parse_mode='html', reply_markup=keyboard_markup)
+
+@dp.callback_query_handler(text='go_back')
+async def back_callback(query: types.CallbackQuery):
+
+    "This handler answer callback query data to send back start msg"
+
+    await query.message.edit_text(STARTSTR.format(query.from_user.first_name), parse_mode='markdown',
+    reply_markup=keyboard_markup, disable_web_page_preview=True)
 
 
 # Begin hentai functions ....
