@@ -21,14 +21,15 @@
 # SOFTWARE.
 
 STARTSTR = """
-Hello {}!
-My name is Nekobot. I'm built using python3 & powerd by [Nekos API](https://nekos.life/) I can supply you loads of anime wallpapers and hentai images for free.
-Click the button below to get started with the list of possible commands! \n\nMade with ❤️ by [starry](tg://user?id=894380120) on aiogram.
+Hello {name}!
+
+My name is Nekobot. I'm built using python3 & powerd by [ɴᴇᴋᴏs ᴀᴘɪ](https://nekos.life/) I can supply you loads of anime wallpapers and hentai images for free!
+Click the button below to get started with the list of possible commands. \n\nMade with ❤️ by [sᴛᴀʀʀʏ](tg://user?id=894380120) on aiogram.
 """
 
 
 HELPSTR = """
-Hello {}!
+Hello {name}!
 This is a list of available commands you can try.
 
 • Commands to get photos:

@@ -47,8 +47,11 @@ async def send_start(message: types.Message):
 
     "This handler will be called when user sends `/start` command"
 
-    await message.reply(STARTSTR.format(message.from_user.first_name), parse_mode='markdown',
-          reply_markup=keyboard_markup, disable_web_page_preview=True)
+    await message.reply(STARTSTR.format(
+          name=" ".join([message.from_user.first_name, message.from_user.last_name])
+          if message.from_user.last_name else message.from_user.first_name),
+          parse_mode='markdown', reply_markup=keyboard_markup,
+          disable_web_page_preview=True)
 
 
 @dp.callback_query_handler(text='send_help')
@@ -61,7 +64,9 @@ async def help_callback(query: types.CallbackQuery):
     btns = types.InlineKeyboardButton("Go back ↩️", callback_data='go_back')
     keyboard_markup.row(btns)
 
-    await query.message.edit_text(HELPSTR.format(query.from_user.first_name),
+    await query.message.edit_text(HELPSTR.format(
+    name=" ".join([query.from_user.first_name, query.from_user.last_name])
+    if query.from_user.last_name else query.from_user.first_name),
     parse_mode='html', reply_markup=keyboard_markup)
 
 @dp.callback_query_handler(text='go_back')
@@ -69,8 +74,11 @@ async def back_callback(query: types.CallbackQuery):
 
     "This handler answer callback query data to send back start msg"
 
-    await query.message.edit_text(STARTSTR.format(query.from_user.first_name), parse_mode='markdown',
-    reply_markup=keyboard_markup, disable_web_page_preview=True)
+    await query.message.edit_text(STARTSTR.format(
+    name=" ".join([query.from_user.first_name, query.from_user.last_name])
+    if query.from_user.last_name else query.from_user.first_name),
+    parse_mode='markdown', reply_markup=keyboard_markup,
+    disable_web_page_preview=True)
 
 
 # Begin hentai functions ....
