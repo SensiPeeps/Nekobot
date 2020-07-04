@@ -77,5 +77,3 @@ This is a list of available commands you can try.
 × <code>/wall</code>
 
 ----- Enjoy !!!"""
-
-
