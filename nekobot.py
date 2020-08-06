@@ -69,6 +69,7 @@ async def help_callback(query: types.CallbackQuery):
     btns = types.InlineKeyboardButton("Go back ↩️", callback_data="go_back")
     keyboard_markup.row(btns)
 
+    await query.answer()
     await query.message.edit_text(
         HELPSTR.format(
             name=" ".join([query.from_user.first_name, query.from_user.last_name])
@@ -85,6 +86,7 @@ async def back_callback(query: types.CallbackQuery):
 
     "This handler answer callback query data to send back start msg"
 
+    await query.answer()
     await query.message.edit_text(
         STARTSTR.format(
             name=" ".join([query.from_user.first_name, query.from_user.last_name])
